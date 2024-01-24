@@ -1,5 +1,6 @@
-// i want to make this class immutable, so i use final keyword
-class Movie {
+import 'package:equatable/equatable.dart';
+
+class Movie extends Equatable {
   final int id;
   final String title;
   final List<int> genreIds;
@@ -7,13 +8,27 @@ class Movie {
   final String overview;
   final String posterPath;
   final double voteAverage;
+  final String releaseDate;
 
-  Movie(
+  const Movie(
       {required this.id,
       required this.title,
       required this.genreIds,
       required this.backdropPath,
       required this.overview,
       required this.posterPath,
-      required this.voteAverage});
+      required this.voteAverage,
+      required this.releaseDate});
+
+  @override
+  List<Object?> get props => [
+        id,
+        title,
+        genreIds,
+        backdropPath,
+        overview,
+        posterPath,
+        voteAverage,
+        releaseDate
+      ];
 }
