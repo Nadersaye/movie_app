@@ -18,6 +18,6 @@ class MovieModel extends Movie {
       backdropPath: json["backdrop_path"],
       overview: json["overview"],
       posterPath: json["poster_path"],
-      voteAverage: json["vote_average"],
+      voteAverage: json["vote_average"].toDouble(),
       releaseDate: json["release_date"]);
 }
