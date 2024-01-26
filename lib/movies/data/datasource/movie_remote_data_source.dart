@@ -14,10 +14,11 @@ abstract class BaseMoviesRemoteDataSource {
 class MovieRemoteDataSource implements BaseMoviesRemoteDataSource {
   @override
   Future<List<MovieModel>> getNowPlayingMovies() async {
-    final responce = await Dio().get(ApiConstants.nowPlayingMoviesUrl,
+    final responce = await Dio().get(ApiConstance.nowPlayingMoviesUrl,
         options: Options(
             contentType: 'application/json',
-            headers: {"Authorization": "Bearer ${ApiConstants.accessToken}"}));
+            headers: {"Authorization": "Bearer ${ApiConstance.accessToken}"}));
+    print('hkjh');
     if (responce.statusCode == 200) {
       /*
       return List<MovieModel>.from(
@@ -33,10 +34,10 @@ class MovieRemoteDataSource implements BaseMoviesRemoteDataSource {
 
   @override
   Future<List<MovieModel>> getPopularMovies() async {
-    final responce = await Dio().get(ApiConstants.popularMoviesUrl,
+    final responce = await Dio().get(ApiConstance.popularMoviesUrl,
         options: Options(
             contentType: 'application/json',
-            headers: {"Authorization": "Bearer ${ApiConstants.accessToken}"}));
+            headers: {"Authorization": "Bearer ${ApiConstance.accessToken}"}));
     if (responce.statusCode == 200) {
       return List<MovieModel>.from((responce.data['results'] as List)
           .map((e) => MovieModel.fromJson(e)));
@@ -48,10 +49,10 @@ class MovieRemoteDataSource implements BaseMoviesRemoteDataSource {
 
   @override
   Future<List<MovieModel>> getTopRatedMovies() async {
-    final responce = await Dio().get(ApiConstants.topRatedMoviesUrl,
+    final responce = await Dio().get(ApiConstance.topRatedMoviesUrl,
         options: Options(
             contentType: 'application/json',
-            headers: {"Authorization": "Bearer ${ApiConstants.accessToken}"}));
+            headers: {"Authorization": "Bearer ${ApiConstance.accessToken}"}));
     if (responce.statusCode == 200) {
       final data = responce.data['resualts'] as List;
       return data.map((e) => MovieModel.fromJson(e)).toList();
