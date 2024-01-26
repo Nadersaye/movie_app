@@ -4,20 +4,20 @@ import 'package:movie_app/core/utils/request_state_enum.dart';
 import '../../domain/entities/movie.dart';
 
 //Movie states class
-abstract class MovieState extends Equatable {
+class MoviesState extends Equatable {
   final List<Movie> nowPlayingMovies;
-  final RequestState requestState;
-  final String errorMessage;
-  //final List<Movie> popularMovies;
-  //final List<Movie> topRatedMovies;
+  final RequestState nowPlayingMoviesState;
+  final String nowPlayingMoviesErrorMessage;
 
-  const MovieState(
-      {this.nowPlayingMovies = const [],
-      this.requestState = RequestState.loading,
-      this.errorMessage = ''});
+  const MoviesState({
+    this.nowPlayingMovies = const [],
+    this.nowPlayingMoviesState = RequestState.loading,
+    this.nowPlayingMoviesErrorMessage = '',
+  });
 
   @override
-  List<Object> get props => [nowPlayingMovies, requestState, errorMessage];
+  List<Object> get props =>
+      [nowPlayingMovies, nowPlayingMoviesState, nowPlayingMoviesErrorMessage];
 }
 
 //create a class for each state
