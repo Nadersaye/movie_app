@@ -1,4 +1,4 @@
-class ApiConstants {
+class ApiConstance {
   static const String baseUrl = "https://api.themoviedb.org/3/";
   static const String apiKey = "8d99e7a13f7817fa58a887e894adf899";
   static const String accessToken =
@@ -6,4 +6,6 @@ class ApiConstants {
   static const String nowPlayingMoviesUrl = "${baseUrl}movie/now_playing";
   static const String popularMoviesUrl = "${baseUrl}movie/popular";
   static const String topRatedMoviesUrl = "${baseUrl}movie/top_rated";
+  static imageBaseUrl(String imagePath) =>
+      "https://image.tmdb.org/t/p/w500/$imagePath";
 }
