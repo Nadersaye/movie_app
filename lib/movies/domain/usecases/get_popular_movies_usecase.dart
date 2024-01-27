@@ -4,7 +4,7 @@ import '../../../core/error/failure.dart';
 import '../entities/movie.dart';
 import '../repository/base_movies_repository.dart';
 
-abstract class GetPopularMoviesUsecase {
+class GetPopularMoviesUsecase {
   final BaseMoviesRepository repository;
 
   GetPopularMoviesUsecase({required this.repository});
