@@ -3,7 +3,7 @@ import '../../../core/error/failure.dart';
 import '../entities/movie.dart';
 import '../repository/base_movies_repository.dart';
 
-abstract class GetTopRatedMoviesUsecase {
+class GetTopRatedMoviesUsecase {
   final BaseMoviesRepository repository;
 
   GetTopRatedMoviesUsecase({required this.repository});
