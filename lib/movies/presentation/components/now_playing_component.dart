@@ -4,9 +4,9 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/utils/request_state_enum.dart';
-import 'package:movie_app/movies/presentation/controller/movie_state.dart';
+import 'package:movie_app/movies/presentation/controller/movie_bloc/movie_state.dart';
 import '../../../core/network/api_constances.dart';
-import '../controller/movie_bloc.dart';
+import '../controller/movie_bloc/movie_bloc.dart';
 
 class NowPlayingComponent extends StatelessWidget {
   const NowPlayingComponent({super.key});
@@ -14,6 +14,9 @@ class NowPlayingComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MovieBloc, MoviesState>(
+      buildWhen: (previous, current) {
+        return previous.nowPlayingMoviesState != current.nowPlayingMoviesState;
+      },
       builder: (context, state) {
         print(state.nowPlayingMoviesState);
         switch (state.nowPlayingMoviesState) {
