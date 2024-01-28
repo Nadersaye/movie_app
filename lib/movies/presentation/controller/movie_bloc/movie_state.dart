@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:movie_app/core/utils/request_state_enum.dart';
 
-import '../../domain/entities/movie.dart';
+import '../../../domain/entities/movie.dart';
 
 //Movie states class
 class MoviesState extends Equatable {
@@ -56,8 +56,17 @@ class MoviesState extends Equatable {
   }
 
   @override
-  List<Object> get props =>
-      [nowPlayingMovies, nowPlayingMoviesState, nowPlayingMoviesErrorMessage];
+  List<Object> get props => [
+        nowPlayingMovies,
+        nowPlayingMoviesState,
+        nowPlayingMoviesErrorMessage,
+        popularMovies,
+        popularMoviesState,
+        popularMoviesErrorMessage,
+        topRatedMovies,
+        topRatedMoviesState,
+        topRatedMoviesErrorMessage
+      ];
 }
 
 //create a class for each state
