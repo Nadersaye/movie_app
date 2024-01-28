@@ -3,10 +3,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/utils/request_state_enum.dart';
-import 'package:movie_app/movies/presentation/controller/movie_bloc.dart';
+import 'package:movie_app/movies/presentation/controller/movie_bloc/movie_bloc.dart';
 import 'package:shimmer/shimmer.dart';
 import '../../../core/network/api_constances.dart';
-import '../controller/movie_state.dart';
+import '../controller/movie_bloc/movie_state.dart';
 
 class TopRatedComponent extends StatelessWidget {
   const TopRatedComponent({super.key});
@@ -14,6 +14,9 @@ class TopRatedComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MovieBloc, MoviesState>(
+      buildWhen: (previous, current) {
+        return previous.topRatedMoviesState != current.topRatedMoviesState;
+      },
       builder: (context, state) {
         switch (state.topRatedMoviesState) {
           case RequestState.loading:
@@ -21,7 +24,8 @@ class TopRatedComponent extends StatelessWidget {
                 height: 400, child: Center(child: CircularProgressIndicator()));
 
           case RequestState.loaded:
-            return FadeIn(
+            return const Text('seccess');
+          /*FadeIn(
               duration: const Duration(milliseconds: 500),
               child: SizedBox(
                 height: 170.0,
@@ -67,7 +71,7 @@ class TopRatedComponent extends StatelessWidget {
                   },
                 ),
               ),
-            );
+            );*/
           case RequestState.error:
             return const SizedBox(
               height: 400,
