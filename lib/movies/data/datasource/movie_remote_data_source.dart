@@ -7,7 +7,7 @@ import 'package:movie_app/movies/data/models/recommendation_movie_model.dart';
 import 'package:movie_app/movies/domain/usecases/get_movie_details_usecase.dart';
 
 import '../../../core/network/error_message_model.dart';
-import '../../domain/usecases/get_similar_movies_usecase.dart';
+import '../../domain/usecases/get_recommendation_movies_usecase.dart';
 
 abstract class BaseMoviesRemoteDataSource {
   Future<List<MovieModel>> getNowPlayingMovies();
