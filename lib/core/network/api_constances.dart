@@ -6,6 +6,9 @@ class ApiConstance {
   static const String nowPlayingMoviesUrl = "${baseUrl}movie/now_playing";
   static const String popularMoviesUrl = "${baseUrl}movie/popular";
   static const String topRatedMoviesUrl = "${baseUrl}movie/top_rated";
-  static imageBaseUrl(String imagePath) =>
-      "https://image.tmdb.org/t/p/w500/$imagePath";
+  static String imageBaseUrl(String imagePath) =>
+      "https://image.tmdb.org/t/p/w500$imagePath";
+  static String movieDetailsUrl(int movieId) => "${baseUrl}movie/$movieId";
+  static String movieRecommendationsUrl(int movieId) =>
+      "${baseUrl}movie/$movieId/recommendations";
 }
