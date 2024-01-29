@@ -7,6 +7,7 @@ import 'package:movie_app/core/utils/request_state_enum.dart';
 import 'package:movie_app/movies/presentation/controller/movie_bloc/movie_state.dart';
 import '../../../core/network/api_constances.dart';
 import '../controller/movie_bloc/movie_bloc.dart';
+import '../views/movie_detail_screen.dart';
 
 class NowPlayingComponent extends StatelessWidget {
   const NowPlayingComponent({super.key});
@@ -39,10 +40,16 @@ class NowPlayingComponent extends StatelessWidget {
                 ),
                 items: state.nowPlayingMovies.map(
                   (item) {
+                    final index = state.nowPlayingMovies.indexOf(item);
                     return GestureDetector(
                       key: const Key('openMovieMinimalDetail'),
                       onTap: () {
-                        /// TODO : NAVIGATE TO MOVIE DETAILS
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return MovieDetailScreen(
+                                id: state.nowPlayingMovies[index].id);
+                          },
+                        ));
                       },
                       child: Stack(
                         children: [
