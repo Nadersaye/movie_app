@@ -1,5 +1,4 @@
 import 'package:movie_app/movies/data/models/genres_model.dart';
-
 import '../../domain/entities/movie_details.dart';
 
 class MovieDetailsModel extends MovieDetails {
@@ -22,6 +21,6 @@ class MovieDetailsModel extends MovieDetails {
           backdropPath: json['backdrop_path'],
           overview: json['overview'],
           releaseDate: json['release_date'],
-          voteAverage: json['vote_average'],
+          voteAverage: json['vote_average'].toDouble(),
           runtime: json['runtime']);
 }
