@@ -1,10 +1,13 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/movies/domain/entities/recommendation_movie.dart';
 import 'package:movie_app/movies/presentation/components/movie_details_component.dart';
 import 'package:movie_app/movies/presentation/components/recommendation_component.dart';
+import 'package:movie_app/movies/presentation/controller/movie_details/movie_details_bloc.dart';
 import '../../../core/network/api_constances.dart';
+import '../../../core/service/service_locator.dart';
 import '../../../core/utils/dummy.dart';
 import '../../domain/entities/movie_details.dart';
 
@@ -15,10 +18,15 @@ class MovieDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: MovieDetailContent(
-        movie: movieDetailDummy,
-        recommendations: recommendationDummy,
+    return BlocProvider(
+      create: (context) => sl<MovieDetailsBloc>()
+        ..add(GetMovieDetailsEvent(id))
+        ..add(GetMovieRecommendationEvent(id)),
+      child: Scaffold(
+        body: MovieDetailContent(
+          movie: movieDetailDummy,
+          recommendations: recommendationDummy,
+        ),
       ),
     );
   }
