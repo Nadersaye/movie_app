@@ -5,8 +5,8 @@ import 'package:movie_app/core/service/service_locator.dart';
 import 'package:movie_app/movies/presentation/components/now_playing_component.dart';
 import 'package:movie_app/movies/presentation/components/popular_component.dart';
 import 'package:movie_app/movies/presentation/components/top_rated_component.dart';
-import 'package:movie_app/movies/presentation/controller/movie_bloc.dart';
-import 'package:movie_app/movies/presentation/controller/movie_event.dart';
+import 'package:movie_app/movies/presentation/controller/movie_bloc/movie_bloc.dart';
+import 'package:movie_app/movies/presentation/controller/movie_bloc/movie_event.dart';
 
 class MoviesView extends StatelessWidget {
   const MoviesView({Key? key}) : super(key: key);
@@ -66,7 +66,7 @@ class MoviesView extends StatelessWidget {
                   ],
                 ),
               ),
-              const PopularComponent(),
+              //const PopularComponent(),
               Container(
                 margin: const EdgeInsets.fromLTRB(
                   16.0,
@@ -106,7 +106,7 @@ class MoviesView extends StatelessWidget {
                   ],
                 ),
               ),
-              const TopRatedComponent(),
+              //const TopRatedComponent(),
               const SizedBox(height: 50.0),
             ],
           ),
