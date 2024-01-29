@@ -7,6 +7,7 @@ import 'package:movie_app/movies/presentation/controller/movie_bloc/movie_bloc.d
 import 'package:shimmer/shimmer.dart';
 import '../../../core/network/api_constances.dart';
 import '../controller/movie_bloc/movie_state.dart';
+import '../views/movie_detail_screen.dart';
 
 class PopularComponent extends StatelessWidget {
   const PopularComponent({super.key});
@@ -23,8 +24,7 @@ class PopularComponent extends StatelessWidget {
             return const SizedBox(
                 height: 400, child: Center(child: CircularProgressIndicator()));
           case RequestState.loaded:
-            return const Text('seccess');
-          /*FadeIn(
+            return FadeIn(
               duration: const Duration(milliseconds: 500),
               child: SizedBox(
                 height: 170.0,
@@ -39,7 +39,12 @@ class PopularComponent extends StatelessWidget {
                       padding: const EdgeInsets.only(right: 8.0),
                       child: InkWell(
                         onTap: () {
-                          /// TODO : NAVIGATE TO  MOVIE DETAILS
+                          // : NAVIGATE TO  MOVIE DETAILS
+                          Navigator.push(context, MaterialPageRoute(
+                            builder: (context) {
+                              return MovieDetailScreen(id: movie.id);
+                            },
+                          ));
                         },
                         child: ClipRRect(
                           borderRadius:
@@ -70,7 +75,7 @@ class PopularComponent extends StatelessWidget {
                   },
                 ),
               ),
-            );*/
+            );
 
           case RequestState.error:
             return const SizedBox(
